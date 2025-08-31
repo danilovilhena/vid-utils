@@ -33,20 +33,22 @@ const Sidebar = () => {
             <button
               key={option.title}
               onClick={() => setActiveTool(option.id)}
-              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-100 ${
+              className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-100 focus:outline-none active:scale-98 ${
                 isActive
-                  ? 'bg-violet-800 text-sidebar-primary-foreground hover:bg-violet-800/90'
-                  : 'hover:bg-sidebar-accent text-sidebar-foreground'
+                  ? 'bg-primary text-sidebar-primary-foreground hover:bg-primary/90 focus:bg-primary/90 dark:hover:bg-primary dark:focus:bg-primary'
+                  : 'hover:bg-sidebar-accent text-sidebar-foreground focus:bg-sidebar-accent'
               }`}
             >
               <IconComponent
                 className={`size-${option.size} ${
-                  isActive ? 'text-sidebar-primary-foreground' : 'text-muted-foreground/70'
+                  isActive ? 'text-sidebar-primary-foreground dark:text-muted' : 'text-muted-foreground/70'
                 }`}
               />
               <span
-                className={`font-medium text-[13px] ${
-                  isActive ? 'text-sidebar-primary-foreground' : 'text-neutral-600 dark:text-muted-foreground'
+                className={`font-normal text-[13px] ${
+                  isActive
+                    ? 'text-sidebar-primary-foreground dark:text-muted'
+                    : 'text-neutral-600 dark:text-muted-foreground'
                 }`}
               >
                 {option.title}
@@ -55,14 +57,14 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <div className="space-x-2 items-center justify-center pb-2">
+      <div className="space-x-2 flex items-center justify-center pb-2">
         <CustomTooltip text="Settings">
-          <button className="p-1.5 rounded-md transition-all duration-100 hover:bg-sidebar-accent">
+          <button className="flex items-center justify-center p-1.5 rounded-md transition-all duration-100 hover:bg-sidebar-accent focus:outline-none focus:bg-sidebar-accent active:scale-98">
             <Settings className="size-4 text-muted-foreground" />
           </button>
         </CustomTooltip>
         <CustomTooltip text="Help">
-          <button className="p-1.5 rounded-md transition-all duration-100 hover:bg-sidebar-accent">
+          <button className="flex items-center justify-center p-1.5 rounded-md transition-all duration-100 hover:bg-sidebar-accent focus:outline-none focus:bg-sidebar-accent active:scale-98">
             <HelpCircle className="size-4 text-muted-foreground" />
           </button>
         </CustomTooltip>
